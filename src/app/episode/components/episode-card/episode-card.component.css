@@ -1,0 +1,14 @@
+.episode-card {
+  width: 252px;
+  background-color: #444;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.episode-description{
+  padding: .5rem;
+  background-color: grey;
+  opacity: .8;
+}

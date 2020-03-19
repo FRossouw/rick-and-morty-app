@@ -1,0 +1,12 @@
+
+<div class="episodes-container" *ngIf="episodes && ((loading$ | async) === false)">
+  <ng-container *ngFor="let episode of episodes">
+    <app-episode-card [episode]="episode"></app-episode-card>
+  </ng-container>
+</div>
+
+<ng-container *ngIf="loading$ | async">
+  <div class="loading-indicator">
+    <img src="../../../../assets/pickle_rick.gif" width="100" height="100" alt="Loading...">
+  </div>
+</ng-container>
