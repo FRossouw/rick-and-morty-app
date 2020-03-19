@@ -6,10 +6,13 @@ import {CharacterDetailsComponent} from './character-details/character-details.c
 const routes: Routes = [
   {
     path: 'characters',
-    component: CharacterListComponent,
     children: [
       {
-        path: ':/id',
+        path: '',
+        component: CharacterListComponent
+      },
+      {
+        path: ':id',
         component: CharacterDetailsComponent
       }
     ]
@@ -27,7 +30,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, { enableTracing: true })
   ]
 })
 export class AppRoutingModule {

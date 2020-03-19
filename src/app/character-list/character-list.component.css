@@ -1,6 +1,8 @@
-
+nav {
+  z-index: 1000;
+}
 .characters-container {
-  padding-top: 1rem;
+  padding-top: 7rem;
   display: grid;
   justify-items: center;
   grid-template-columns: 1fr;
