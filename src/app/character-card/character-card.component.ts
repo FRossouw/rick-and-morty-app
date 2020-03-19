@@ -3,11 +3,11 @@ import { Character } from '../models/character';
 import * as moment from 'moment';
 
 @Component({
-  selector: 'app-character',
-  templateUrl: './character.component.html',
-  styleUrls: ['./character.component.css']
+  selector: 'app-character-card',
+  templateUrl: './character-card.component.html',
+  styleUrls: ['./character-card.component.css']
 })
-export class CharacterComponent implements OnInit {
+export class CharacterCardComponent implements OnInit {
 
   @Input()
   character: Character;

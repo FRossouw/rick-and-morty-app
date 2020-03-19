@@ -5,11 +5,11 @@ import { switchAll, debounceTime, map, tap } from 'rxjs/operators';
 import { of, BehaviorSubject } from 'rxjs';
 
 @Component({
-  selector: 'app-characters',
-  templateUrl: './characters.component.html',
-  styleUrls: ['./characters.component.css']
+  selector: 'app-character-list',
+  templateUrl: './character-list.component.html',
+  styleUrls: ['./character-list.component.css']
 })
-export class CharactersComponent implements OnInit, OnChanges {
+export class CharacterListComponent implements OnInit, OnChanges {
 
   @Input() query: string;
 

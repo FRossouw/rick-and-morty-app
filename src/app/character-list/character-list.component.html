@@ -1,6 +1,6 @@
 <div class="characters-container" *ngIf="characters && ((loading$ | async) === false)">
   <ng-container *ngFor="let character of characters.results">
-    <app-character [character]="character"></app-character>
+    <app-character-card [character]="character"></app-character-card>
   </ng-container>
 </div>
 

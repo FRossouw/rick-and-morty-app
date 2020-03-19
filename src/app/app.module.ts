@@ -1,16 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { CharactersComponent } from './characters/characters.component';
-import { CharacterComponent } from './character/character.component';
+import { CharacterListComponent } from './character-list/character-list.component';
+import { CharacterCardComponent } from './character-card/character-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CharacterDetailsComponent } from './character-details/character-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CharactersComponent,
-    CharacterComponent
+    CharacterListComponent,
+    CharacterCardComponent,
+    CharacterDetailsComponent
   ],
   imports: [
     BrowserModule,
