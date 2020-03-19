@@ -1,4 +1,6 @@
+
 .characters-container {
+  padding-top: 1rem;
   display: grid;
   justify-items: center;
   grid-template-columns: 1fr;

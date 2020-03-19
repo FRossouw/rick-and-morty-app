@@ -6,6 +6,8 @@ import { CharacterCardComponent } from './character-card/character-card.componen
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CharacterDetailsComponent } from './character-details/character-details.component';
+import {AppRoutingModule} from './app-routing.module';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -15,8 +17,10 @@ import { CharacterDetailsComponent } from './character-details/character-details
     CharacterDetailsComponent
   ],
   imports: [
+    RouterModule,
     BrowserModule,
     HttpClientModule,
+    AppRoutingModule,
     ReactiveFormsModule
   ],
   providers: [],
