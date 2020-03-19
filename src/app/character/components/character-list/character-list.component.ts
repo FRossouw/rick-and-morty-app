@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { CharactersService } from '../services/characters.service';
-import { Characters } from '../models/characters';
+import { CharactersService } from '../../../services/characters.service';
+import { Characters } from '../../../models/characters';
 import {switchAll, debounceTime, map, tap, startWith} from 'rxjs/operators';
 import { of, BehaviorSubject } from 'rxjs';
 import {FormBuilder, FormGroup} from '@angular/forms';

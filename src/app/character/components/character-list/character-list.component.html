@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100 position-fixed">
-  <a class="navbar-brand mr-auto" href="/">R&M</a>
+  <a class="navbar-brand mr-auto" href="/characters">R&M</a>
 
   <form [formGroup]="form" class="form-inline my-2">
     <input formControlName="query" class="form-control mr-2 col-sm-12" type="text" id="characterName" placeholder="Character name">
@@ -14,6 +14,6 @@
 
 <ng-container *ngIf="loading$ | async">
   <div class="loading-indicator">
-    <img src="../../assets/pickle_rick.gif" width="100" height="100" alt="Loading...">
+    <img src="../../../../assets/pickle_rick.gif" width="100" height="100" alt="Loading...">
   </div>
 </ng-container>

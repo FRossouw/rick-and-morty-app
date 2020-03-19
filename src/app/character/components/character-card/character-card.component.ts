@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Character } from '../models/character';
+import { Character } from '../../../models/character';
 import * as moment from 'moment';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-character-card',
@@ -12,13 +13,23 @@ export class CharacterCardComponent implements OnInit {
   @Input()
   character: Character;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    console.log(this.character);
   }
 
   get createdDate(): string {
     return moment(this.character.created).fromNow();
+  }
+
+  viewEpisodes(character: Character) {
+    const episodeNumbers = character.episode
+      .map(e => e.substring(e.lastIndexOf('/') + 1))
+      .join(',');
+
+    this.router.navigate([ 'episodes' ], { queryParams: { numbers: episodeNumbers }})
+      .catch(e => console.error(e));
   }
 
 }

@@ -1,27 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { CharacterListComponent } from './character-list/character-list.component';
-import { CharacterCardComponent } from './character-card/character-card.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
-import { CharacterDetailsComponent } from './character-details/character-details.component';
 import {AppRoutingModule} from './app-routing.module';
 import {RouterModule} from '@angular/router';
+import { EpisodeModule } from './episode/episode.module';
+import { CharacterModule } from './character/character.module';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CharacterListComponent,
-    CharacterCardComponent,
-    CharacterDetailsComponent
+    NotFoundComponent
   ],
   imports: [
     RouterModule,
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule,
-    ReactiveFormsModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

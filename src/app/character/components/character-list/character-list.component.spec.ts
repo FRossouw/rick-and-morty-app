@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CharacterListComponent } from './character-list.component';
-import {AppComponent} from '../app.component';
-import {newEvent} from '../app.component.spec';
+import {AppComponent} from '../../../app.component';
+import {newEvent} from '../../../app.component.spec';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 
