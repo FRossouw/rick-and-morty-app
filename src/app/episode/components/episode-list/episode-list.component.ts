@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {EpisodeService} from '../../../services/episode.service';
 import {ActivatedRoute} from '@angular/router';
 import {BehaviorSubject} from 'rxjs';
-import {Episodes} from '../../../models/episodes';
 import {Episode} from '../../../models/episode';
 
 @Component({

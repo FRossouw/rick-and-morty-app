@@ -18,7 +18,4 @@ describe('CharacterComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
-  // TODO: Add Character component unit tests.
-
 });

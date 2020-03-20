@@ -4,8 +4,6 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {RouterModule} from '@angular/router';
-import { EpisodeModule } from './episode/episode.module';
-import { CharacterModule } from './character/character.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({

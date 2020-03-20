@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { CharactersService } from '../../../services/characters.service';
 import { Characters } from '../../../models/characters';
 import {switchAll, debounceTime, map, tap, startWith} from 'rxjs/operators';

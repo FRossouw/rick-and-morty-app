@@ -16,7 +16,7 @@ export class CharacterCardComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    console.log(this.character);
+//    console.log(this.character);
   }
 
   get createdDate(): string {
