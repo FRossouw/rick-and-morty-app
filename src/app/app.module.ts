@@ -17,7 +17,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

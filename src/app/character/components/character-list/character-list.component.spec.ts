@@ -1,39 +1,46 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CharacterListComponent } from './character-list.component';
-import {AppComponent} from '../../../app.component';
 import {newEvent} from '../../../app.component.spec';
 import {ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {Characters} from '../../../models/characters';
+import {of} from 'rxjs';
+import {CharactersService} from '../../../services/characters.service';
 
 describe('CharactersComponent', () => {
-  let component: CharacterListComponent;
+  let characterListComponent: CharacterListComponent;
   let fixture: ComponentFixture<CharacterListComponent>;
 
   beforeEach(async(() => {
+
+    const charactersService = { getCharacters: (query: string) => {
+        return of({ results: [{ id: 1, name: 'Rick Sanchez', status: 'Alive' } ] } as Characters);
+      }};
+
     TestBed.configureTestingModule({
       declarations: [ CharacterListComponent ],
-      imports: [ ReactiveFormsModule, HttpClientModule ]
+      imports: [ ReactiveFormsModule ],
+      providers: [
+        {
+          provide: CharactersService,
+          useValue: charactersService
+        }
+      ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CharacterListComponent);
-    component = fixture.componentInstance;
+    characterListComponent = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  // TODO: Add characters component unit tests.
-
   it('should update the query when users searches by character name', (done) => {
-    fixture = TestBed.createComponent(CharacterListComponent);
 
-    const characterListComponent = fixture.componentInstance;
     const hostElement = fixture.nativeElement;
     const characterName = 'Rick Sanchez';
 
-    fixture.detectChanges();
     characterListComponent.query.valueChanges.subscribe(x => {
       expect(x).toEqual('Rick Sanchez');
       done();

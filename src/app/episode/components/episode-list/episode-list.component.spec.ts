@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { EpisodeListComponent } from './episode-list.component';
 import {EpisodeService} from '../../../services/episode.service';
 import {HttpClientModule} from '@angular/common/http';
-import {RouterModule} from '@angular/router';
+import {ActivatedRoute, RouterModule} from '@angular/router';
 
 describe('EpisodeListComponent', () => {
   let component: EpisodeListComponent;
@@ -13,7 +13,14 @@ describe('EpisodeListComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ EpisodeListComponent ],
       imports: [ HttpClientModule, RouterModule ],
-      providers: [ EpisodeService ]
+      providers: [ EpisodeService, {
+        provide: ActivatedRoute,
+        useValue: {
+          snapshot: {
+            queryParams: ''
+          }
+        }
+      } ]
     })
     .compileComponents();
   }));
