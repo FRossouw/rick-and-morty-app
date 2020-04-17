@@ -1,9 +1,11 @@
 <div class="character-card">
   <div class="character-image border shadow-sm rounded">
-    <img src="{{character.image}}" alt="not found" width="250" height="250">
-    
+    <img src="{{character.image}}" alt="not found" width="250" height="250" />
+
     <div class="character-description">
-      <h3>{{character.name}}</h3>
+      <h3>
+        <a [routerLink]="['/characters', character.id]">{{character.name}}</a>
+      </h3>
 
       <span>id: {{character.id}} - created {{createdDate}}</span>
     </div>
@@ -40,6 +42,13 @@
       <div class="character-detail">
         <span>Area</span>
         <span class="character-property text-success" title="{{character.origin.name}}">{{character.location.name}}</span>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="character.episode && character.episode.length">
+      <div class="character-detail">
+        <span></span>
+        <button (click)="viewEpisodes(character)" class="btn btn-warning">View episodes</button>
       </div>
     </ng-container>
   </div>

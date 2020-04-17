@@ -10,7 +10,7 @@ export class Character {
   origin: LocationRef;
   location: LocationRef;
   image: string;
-  episodes: string[];
+  episode: string[];
   url: string;
   created: string;
 }

@@ -1,4 +1,5 @@
-.characters-container {
+.episodes-container {
+  padding-top: 7rem;
   display: grid;
   justify-items: center;
   grid-template-columns: 1fr;
@@ -6,7 +7,7 @@
 }
 
 @media screen and (min-width: 610px) and (max-width: 809px) {
-  .characters-container {
+  .episodes-container {
     display: grid;
     justify-content: center;
     grid-template-columns: .3fr .3fr;
@@ -16,7 +17,7 @@
 }
 
 @media screen and (min-width: 810px) {
-  .characters-container {
+  .episodes-container {
     display: grid;
     justify-content: center;
     grid-template-columns: 252px 252px 252px;
@@ -25,7 +26,7 @@
 }
 
 @media screen and (min-width: 1076px) {
-  .characters-container {
+  .episodes-container {
     display: grid;
     justify-content: center;
     grid-template-columns: 252px 252px 252px 252px;
@@ -34,7 +35,7 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .characters-container {
+  .episodes-container {
     display: grid;
     justify-content: center;
     grid-template-columns: 252px 252px 252px 252px 252px;

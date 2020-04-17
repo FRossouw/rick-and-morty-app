@@ -9,21 +9,6 @@ import { debounceTime } from 'rxjs/operators';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
-  form: FormGroup;
-
-  query$: Observable<string>;
-
-  constructor(fb: FormBuilder) {
-    this.form = fb.group({
-      query: null
-    });
-  }
-
-  get query() { return this.form.get('query'); }
-
   ngOnInit() {
-    this.query$ = this.query.valueChanges
-      .pipe(debounceTime(300));
   }
 }

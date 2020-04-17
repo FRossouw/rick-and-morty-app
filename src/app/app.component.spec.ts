@@ -7,9 +7,6 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
-      ],
-      imports: [
-        ReactiveFormsModule
       ]
     }).compileComponents();
   }));
@@ -18,28 +15,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it('should update the query when users searches by character name', (done) => {
-    const fixture = TestBed.createComponent(AppComponent);
-
-    const app = fixture.componentInstance;
-    const hostElement = fixture.nativeElement;
-    const characterName = 'Rick Sanchez';
-
-    fixture.detectChanges();
-    app.query$.subscribe(x => {
-      expect(x).toEqual('Rick Sanchez');
-      done();
-    });
-
-    const characterNameInput: HTMLInputElement = hostElement.querySelector('input');
-
-    characterNameInput.value = characterName;
-
-    characterNameInput.dispatchEvent(newEvent('input'));
-
-    fixture.detectChanges();
   });
 });
 
