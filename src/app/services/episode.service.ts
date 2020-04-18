@@ -18,6 +18,15 @@ export class EpisodeService {
         .pipe(map(r => r.result));
     }
 
-    return this.http.get<Episode[]>(`${environment.apiUri}/api/episode/${query}`);
+    return this.http
+      .get<Episode[]>(`${environment.apiUri}/api/episode/${query}`)
+      .pipe(map(response => {
+          if (!Array.isArray(response)) {
+            return [ response ];
+          }
+
+          return response;
+        }));
+
   }
 }

@@ -34,6 +34,8 @@ describe('EpisodeService', () => {
       const req = httpTestingController.expectOne(`${environment.apiUri}/api/episode`);
       req.flush(EPISODES);
       httpTestingController.verify();
+
+      expect().nothing();
     });
 
     it('should filter episodes', () => {
@@ -42,6 +44,19 @@ describe('EpisodeService', () => {
       const req = httpTestingController.expectOne(`${environment.apiUri}/api/episode/1,2,3,4,5`);
       req.flush(EPISODES);
       httpTestingController.verify();
+
+      expect().nothing();
+    });
+
+    it('should filter one episode', () => {
+      service.getEpisodes('1').subscribe();
+
+      const req = httpTestingController.expectOne(`${environment.apiUri}/api/episode/1`);
+      req.flush(EPISODES);
+      httpTestingController.verify();
+
+      expect().nothing();
+
     });
 
   });
