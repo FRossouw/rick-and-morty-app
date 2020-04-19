@@ -11,7 +11,7 @@ import {Episode} from '../../../models/episode';
 })
 export class EpisodeListComponent implements OnInit {
   episodes: Episode[];
-  loading$ = new BehaviorSubject<boolean>(false);
+  loading$ = new BehaviorSubject<boolean>(true);
 
   constructor(private episodeService: EpisodeService, private route: ActivatedRoute) { }
 

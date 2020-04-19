@@ -9,6 +9,7 @@ import {environment} from '../../environments/environment';
 describe('CharactersService', () => {
   let httpTestingController: HttpTestingController;
   let charactersService: CharactersService;
+  let CHARACTERS: Characters;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -20,32 +21,47 @@ describe('CharactersService', () => {
     httpTestingController = TestBed.inject(HttpTestingController);
     charactersService = TestBed.inject(CharactersService);
 
+    CHARACTERS = {
+      results: [{
+        id: 1,
+        name: 'Rick Sanchez',
+        status: 'Alive'
+      }]
+    } as Characters;
+
   });
 
-  describe('CharactersService', () => {
-    it('#getCharacters should return characters', (done: DoneFn) => {
-      // FROM DEEZER
-      const characters = {
-        results: [{
-          id: 1,
-          name: 'Rick Sanchez',
-          status: 'Alive'
-        }]
-      } as Characters;
-
+  describe('getCharacters', () => {
+    it('should return characters', (done: DoneFn) => {
       charactersService.getCharacters('')
         .subscribe(value => {
 
           expect(value)
-            .toBe(characters);
+            .toBe(CHARACTERS);
 
           done();
         });
 
-      const controller = httpTestingController.expectOne(`${environment.apiUri}/api/character`);
-      controller.flush(characters);
+      const req = httpTestingController.expectOne(`${environment.apiUri}/api/character`);
+      req.flush(CHARACTERS);
       httpTestingController.verify();
 
     });
+
+    it('should filter characters', (done: DoneFn) => {
+      charactersService.getCharacters('Rick Sanchez')
+        .subscribe(value =>  {
+          expect(value)
+            .toBe(CHARACTERS);
+
+          done();
+        });
+
+      const req = httpTestingController.expectOne(`${environment.apiUri}/api/character?name=Rick Sanchez`);
+      req.flush(CHARACTERS);
+      httpTestingController.verify();
+
+    });
+
   });
 });

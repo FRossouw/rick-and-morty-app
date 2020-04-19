@@ -1,57 +1,84 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { CharacterListComponent } from './character-list.component';
-import {newEvent} from '../../../app.component.spec';
+import {CharacterListComponent} from './character-list.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {Characters} from '../../../models/characters';
-import {of} from 'rxjs';
 import {CharactersService} from '../../../services/characters.service';
+import {of} from 'rxjs';
+import {By} from '@angular/platform-browser';
+import {Component, Input} from '@angular/core';
+import {Character} from '../../../models/character';
+import {Characters} from '../../../models/characters';
 
-describe('CharactersComponent', () => {
-  let characterListComponent: CharacterListComponent;
+@Component({
+  selector: 'app-character-card',
+  template: '<div></div>'
+})
+class FakeCharacterCardComponent {
+  @Input()
+  character: Character;
+}
+
+describe('CharacterListComponent', () => {
+  let component: CharacterListComponent;
   let fixture: ComponentFixture<CharacterListComponent>;
+  let characterService;
+  let CHARACTERS;
 
   beforeEach(async(() => {
 
-    const charactersService = { getCharacters: (query: string) => {
-        return of({ results: [{ id: 1, name: 'Rick Sanchez', status: 'Alive' } ] } as Characters);
-      }};
+    characterService = jasmine.createSpyObj(['getCharacters']);
+    CHARACTERS = {
+      results: [
+        {id: 1, name: 'Rick Sanchez'},
+        {id: 2, name: 'Summer Smith'},
+        {id: 3, name: 'Ants in my Eyes Johnson'}
+      ]
+    } as Characters;
+
 
     TestBed.configureTestingModule({
-      declarations: [ CharacterListComponent ],
+      declarations: [ CharacterListComponent, FakeCharacterCardComponent ],
       imports: [ ReactiveFormsModule ],
       providers: [
         {
           provide: CharactersService,
-          useValue: charactersService
+          useValue: characterService
         }
       ]
     })
     .compileComponents();
+
+    fixture = TestBed.createComponent(CharacterListComponent);
+    component = fixture.componentInstance;
+
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CharacterListComponent);
-    characterListComponent = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should update the query when users searches by character name', (done) => {
-
-    const hostElement = fixture.nativeElement;
-    const characterName = 'Rick Sanchez';
-
-    characterListComponent.query.valueChanges.subscribe(x => {
-      expect(x).toEqual('Rick Sanchez');
-      done();
-    });
-
-    const characterNameInput: HTMLInputElement = hostElement.querySelector('input');
-
-    characterNameInput.value = characterName;
-
-    characterNameInput.dispatchEvent(newEvent('input'));
+  it('should display loading indicator', () => {
+    characterService.getCharacters.and.returnValue(of([]));
 
     fixture.detectChanges();
+
+    component.loading$.next(true);
+    fixture.detectChanges();
+
+    const loadingIndicators = fixture.debugElement.queryAll(By.css('img'));
+
+    expect(loadingIndicators.length).toBe(1);
+
   });
+
+  it('should display characters', async () => {
+    characterService.getCharacters.and.returnValue(of(CHARACTERS));
+
+    fixture.detectChanges();
+
+    const characters = fixture.debugElement.queryAll(By.directive(FakeCharacterCardComponent));
+
+    expect(characters.length).toBe(3);
+
+    for (let i = 0; i < characters.length; i++) {
+      expect(CHARACTERS.results[i]).toEqual(characters[i].componentInstance.character);
+    }
+  });
+
 });
