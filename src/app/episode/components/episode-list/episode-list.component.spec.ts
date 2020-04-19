@@ -58,9 +58,9 @@ describe('EpisodeListComponent', () => {
     component.loading$.next(true);
     fixture.detectChanges();
 
-    const loadingIndicator = fixture.debugElement.queryAll(By.css('img'));
+    const loadingIndicators = fixture.debugElement.queryAll(By.css('img'));
 
-    expect(loadingIndicator.length).toBe(1);
+    expect(loadingIndicators.length).toBe(1);
   });
 
   it('should display episodes', () => {
@@ -70,7 +70,7 @@ describe('EpisodeListComponent', () => {
     const episodes = fixture.debugElement.queryAll(By.directive(EpisodeCardComponent));
 
     for (let i = 0; i <  episodes.length; i++) {
-      expect(episodes[i].componentInstance.episode).toEqual(EPISODES[i]);
+      expect(EPISODES[i]).toEqual(episodes[i].componentInstance.episode);
     }
   });
 });

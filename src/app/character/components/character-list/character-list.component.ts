@@ -10,7 +10,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
   templateUrl: './character-list.component.html',
   styleUrls: ['./character-list.component.css']
 })
-export class CharacterListComponent implements OnInit, OnChanges {
+export class CharacterListComponent implements OnInit {
 
   characters: Characters;
   form: FormGroup;
@@ -37,17 +37,4 @@ export class CharacterListComponent implements OnInit, OnChanges {
     });
 
   }
-
-  ngOnChanges(change: SimpleChanges): void {
-    of(change.query.currentValue)
-      .pipe(
-        debounceTime(300),
-        tap(() => this.loading$.next(true)),
-        map(x => x || null),
-        map(x => this.characterService.getCharacters(x)),
-        switchAll(),
-        tap(() => this.loading$.next(false)))
-      .subscribe(x => this.characters = x);
-  }
-
 }
