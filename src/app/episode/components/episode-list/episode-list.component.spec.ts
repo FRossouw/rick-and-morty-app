@@ -7,7 +7,6 @@ import {of} from 'rxjs';
 import {EpisodeService} from '../../../services/episode.service';
 import {Component, Input} from '@angular/core';
 import {Episode} from '../../../models/episode';
-import {ValidatorFn} from "@angular/forms";
 
 @Component({
   selector: 'app-episode-card',
